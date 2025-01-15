@@ -1,0 +1,21 @@
+commit 696f2f0bfc45b1f60923554ec812b2f2214a80c8
+Author: Sven Sauleau <sven@sauleau.com>
+Date:   Wed Jan 15 11:16:54 2025 +0100
+
+    comment out fchown() usage
+    
+    fchown is not provided by WASI at the moment and it's safe to comment out.
+
+diff --git a/bzip2.c b/bzip2.c
+index a3a916b..f472da1 100644
+--- a/bzip2.c
++++ b/bzip2.c
+@@ -1055,7 +1055,7 @@ void applySavedTimeInfoToOutputFile ( Char *dstName )
+ static
+ void applySavedFileAttrToOutputFile ( IntNative fd )
+ {
+-#  if BZ_UNIX
++#  if 0
+    IntNative retVal;
+ 
+    retVal = fchmod ( fd, fileMetaInfo.st_mode );
